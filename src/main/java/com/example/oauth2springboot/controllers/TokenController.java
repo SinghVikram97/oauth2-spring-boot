@@ -1,6 +1,6 @@
 package com.example.oauth2springboot.controllers;
 
-import com.example.oauth2springboot.Token;
+import com.example.oauth2springboot.models.Token;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.access.prepost.PreAuthorize;
