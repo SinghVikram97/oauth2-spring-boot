@@ -33,7 +33,7 @@ public class TokenController {
 
        String token=getJwtToken(username);
 
-       return new Token(token);
+       return new Token(token,username);
     }
 
     private String getJwtToken(String username){
