@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 public class TokenController {
 
-    @PostMapping("token")
+    @GetMapping("token")
     @PreAuthorize("hasRole('ROLE_USER')")
     public Token getToken(HttpServletRequest request){
 
@@ -49,7 +50,7 @@ public class TokenController {
                 .setExpiration(new Date(System.currentTimeMillis()+600000))
                 .signWith(SignatureAlgorithm.HS512,secretKey.getBytes()).compact();
 
-        return "Bearer "+token;
+        return token;
     }
 
 }
